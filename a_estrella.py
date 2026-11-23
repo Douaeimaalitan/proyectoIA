@@ -3,7 +3,7 @@ from itertools import count
 from red_monterrey.estacion import Estacion
 from red_monterrey.conexion import Conexion
 from red_monterrey.red import Red
-from red_monterrey.heuristica import Heuristica
+from heuristica import Heuristica
 
 def a_estrella(origen : Estacion, destino : Estacion, red : Red, h : Heuristica):
     abiertos = []
