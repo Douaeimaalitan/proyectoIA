@@ -28,4 +28,7 @@ def construirred():
     _cargarLinea(red,'L1',nombres1, tiempos1)
     _cargarLinea(red,'L2',nombres2, tiempos2)
     _cargarLinea(red,'L3',nombres3, tiempos3)
+    red.agregarTrasbordo(Estacion('CUAUHTÉMOC'), 'L1', 'L2', 4)
+    red.agregarTrasbordo(Estacion('FÉLIX U. GÓMEZ'), 'L1', 'L3', 4)
+    red.agregarTrasbordo(Estacion('GENERAL I. ZARAGOZA'), 'L2', 'L3', 4)
     return red

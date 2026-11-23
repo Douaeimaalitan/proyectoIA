@@ -19,6 +19,9 @@ class Red:
         self.agregarEstacion(est2)
         self.conexiones[est1].add(Conexion(est1, est2, linea, tiempo))
         self.conexiones[est2].add(Conexion(est2, est1, linea, tiempo))
+    def agregarTrasbordo(self, estacion, linea1, linea2, tiempo):
+        self.trasbordos[(estacion, linea1, linea2)] = tiempo
+        self.trasbordos[(estacion, linea2, linea1)] = tiempo
     def __str__(self):
         lineas = []
         for estacion in sorted(self.estaciones, key=lambda e: e.nombre):
