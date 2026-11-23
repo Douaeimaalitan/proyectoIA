@@ -5,6 +5,7 @@ class Red:
     def __init__(self):
         self.estaciones = set()
         self.conexiones = {}
+        self.trasbordos= {}
 
     def agregarEstacion(self, estacion):
         self.estaciones.add(estacion)

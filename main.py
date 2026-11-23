@@ -1,5 +1,9 @@
 import sys 
 from pathlib import Path
+from red_monterrey.estacion import Estacion
+from red_monterrey.red import Red
+from red_monterrey.heuristica import Heuristica
+from a_estrella import a_estrella
 from PySide6.QtWidgets import (QApplication, QComboBox, QPushButton, QTextEdit)
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import (QFile, QObject)
@@ -112,5 +116,25 @@ def limpiar():
 boton_calcular.clicked.connect(calcular_ruta)
 boton_limpiar.clicked.connect(limpiar)
 # mostramos interfaz
+# Prueba temporal del algoritmo A*
+a = Estacion("A")
+b = Estacion("B")
+c = Estacion("C")
+
+red = Red()
+
+red.agregarConexion(a, b, "L1", 4)
+red.agregarConexion(b, c, "L1", 4)
+red.agregarConexion(a, c, "L1", 15)
+
+h = Heuristica()
+
+h.agregarH(a, c, 0)
+h.agregarH(b, c, 0)
+
+ruta, tiempo = a_estrella(a, c, red, h)
+
+print("Ruta:", " -> ".join(str(e) for e in ruta))
+print("Tiempo:", tiempo, "minutos")
 ventana.show()
 sys.exit(app.exec())
