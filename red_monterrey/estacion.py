@@ -9,4 +9,6 @@ class Estacion:
         return hash(self.nombre)
 
     def __str__(self):
-        return self.nombre + ""
+        return self.nombre
+    def __repr__(self):
+        return f"Estacion({self.nombre!r})"

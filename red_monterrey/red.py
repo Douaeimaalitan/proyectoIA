@@ -12,7 +12,8 @@ class Red:
             self.conexiones[estacion] = set()
 
     def agregarConexion(self, est1 : Estacion, est2 : Estacion, linea : str, tiempo : float):
-
+        if not isinstance(tiempo, (int,float)) or tiempo <= 0:
+            raise ValueError(f"Tiempo suministrado debe ser positivo, no {tiempo!r}")
         self.agregarEstacion(est1)
         self.agregarEstacion(est2)
         self.conexiones[est1].add(Conexion(est1, est2, linea, tiempo))
