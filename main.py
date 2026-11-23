@@ -5,12 +5,12 @@ from red_monterrey.red import Red
 def main():
     atocha = Estacion("Atocha")
     sol = Estacion("Sol")
-    conexion = Conexion(atocha, sol, "L2", "3")
+    #con el metodo str que he metido en conexión no hace falta meter esta linea ni el print
     red = Red()
     red.agregarConexion(atocha, sol, "L2", "3")
-    print(conexion)
-    print(atocha)
+    for con in red.conexiones[atocha]:
+        print (con)
     return 0
 
 if __name__ == "__main__":
-    main() este es el main, no es el definitivo
+    main() #este es el main, no es el definitivo

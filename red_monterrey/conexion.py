@@ -12,3 +12,5 @@ class Conexion:
 
     def __hash__(self):
         return hash((self.est1, self.est2, self.linea, self.tiempo))
+    def __str__(self):
+        return f"{self.est1} -> {self.est2} ({self.linea}, {self.tiempo} min)"
