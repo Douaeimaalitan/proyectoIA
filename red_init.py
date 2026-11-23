@@ -1,14 +1,21 @@
 from red_monterrey.estacion import Estacion
 from red_monterrey.red import Red
 
-nombres1 = ['TALLERES','SAN BERNABÉ', 'UNIDAD MODELO', 'AZTLÁN', 'PENITENCIARÍA', 'ALFONSO REYES', 'MITRAS', 'SIMÓN BOLÍVAR', 'HOSPITAL', 'EDISON', 'CENTRAL', 'CUAUHTÉMOC', 'DEL GOLFO', 'FELIx U.GÓMEZ', 'PARQUE FUNDIDORA','Y GRIEGA', 'ELOY CAVAZOS', 'LERDO DE TEJEDA', 'EXPOSICIÓN']
-tiempos1 = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
+nombres1 = ['TALLERES', 'SAN BERNABÉ', 'UNIDAD MODELO', 'AZTLÁN', 'PENITENCIARÍA',
+            'ALFONSO REYES', 'MITRAS', 'SIMÓN BOLÍVAR', 'HOSPITAL', 'EDISON', 'CENTRAL',
+            'CUAUHTÉMOC', 'DEL GOLFO', 'FÉLIX U. GÓMEZ', 'PARQUE FUNDIDORA', 'Y GRIEGA',
+            'ELOY CAVAZOS', 'LERDO DE TEJEDA', 'EXPOSICIÓN']
+tiempos1 = [3] * (len(nombres1) - 1)   # 18
 
-nombres2 = ['SENDERO', ]
-tiempos2 = []
+nombres2 = ['SENDERO', 'SANTIAGO TAPIA', 'SAN NICOLÁS', 'ANÁHUAC', 'UNIVERSIDAD',
+            'NIÑOS HÉROES', 'REGINA', 'GENERAL ANAYA', 'CUAUHTÉMOC', 'ALAMEDA',
+            'FUNDADORES', 'PADRE MIER', 'GENERAL I. ZARAGOZA']
+tiempos2 = [3] * (len(nombres2) - 1)   # 12
 
-nombres3 = []
-tiempos3 = []
+nombres3 = ['HOSPITAL METROPOLITANO', 'LOS ÁNGELES', 'RUIZ CORTINES', 'COLONIA MODERNA',
+            'METALÚRGICOS', 'FÉLIX U. GÓMEZ', 'COLONIA OBRERA', 'SANTA LUCÍA',
+            'GENERAL I. ZARAGOZA']
+tiempos3 = [3] * (len(nombres3) - 1)   # 8
 def _cargarLinea(red, linea, nombres,tiempos):
     est1 = Estacion(nombres[0])
     for i in range(len(nombres)-1):
