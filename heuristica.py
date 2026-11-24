@@ -7,10 +7,10 @@ def distancia(c1,c2):
 
 def calcular_vel_max(red,coords):
     vel_max=0
-    for conexiones in red.conexiones.values:
+    for conexiones in red.conexiones.values():
         for c in conexiones:
             vel= distancia(coords[c.est1],coords[c.est2])/c.tiempo
-            if(vel> vel_max):
+            if vel> vel_max:
                 vel_max=vel
     return vel_max
 
@@ -24,4 +24,4 @@ class Heuristica:
     def funcionH(self, origen : Estacion, destino : Estacion):
         if origen== destino:
             return 0
-        return self.h[origen][destino]
+        return distancia(self.coords[origen],self.coords[destino])/ self.vel_max
