@@ -126,11 +126,15 @@ red = Red()
 red.agregarConexion(a, b, "L1", 4)
 red.agregarConexion(b, c, "L1", 4)
 red.agregarConexion(a, c, "L1", 15)
+coords_de_prueba = {
+    a: (0, 0),
+    b: (4, 0),
+    c: (8, 0)
+}
+h = Heuristica(coords_de_prueba, vel_max = 1.0)
 
-h = Heuristica()
-
-h.agregarH(a, c, 0)
-h.agregarH(b, c, 0)
+#h.agregarH(a, c, 0)
+#h.agregarH(b, c, 0)
 
 ruta, tiempo = a_estrella(a, c, red, h)
 

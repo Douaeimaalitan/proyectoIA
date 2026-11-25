@@ -10,5 +10,3 @@ class Estacion:
 
     def __str__(self):
         return self.nombre
-    def __repr__(self):
-        return f"Estacion({self.nombre!r})"
