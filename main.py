@@ -77,6 +77,7 @@ def calcular_ruta():
 
 #rellenamos los botones
 nombres_est = list(estaciones.values())
+nombres_est.sort()
 est_origen.clear()
 est_destino.clear()
 est_origen.addItem("Seleccionar origen")
