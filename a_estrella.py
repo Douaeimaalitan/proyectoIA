@@ -87,10 +87,10 @@ def _actualizar_descendientes(nodo_raiz, g, padres, hijos, red, abiertos, cerrad
     pila = list(hijos.get(nodo_raiz, ())) #hijos del nodo que ha cambiado el coste
     while pila:
         desc = pila.pop()
-        if padres.get(desc) != nodo_raiz: #compruebo que siga siendo el padre por si se ha cambiado
+        padre = padres.get(desc)
+        if padre is None:
             continue
-        coste_tramo = _coste_directo(nodo_raiz, desc, red)
-        nuevo_g = g[nodo_raiz] + coste_tramo #actualiza g
+        nuevo_g = g[padre] + _coste_directo(padre, desc, red) #actualiza g
         if nuevo_g < g.get(desc, float("inf")):
             g[desc] = nuevo_g
             f_desc = nuevo_g + h.funcionH(desc[0], destino)
