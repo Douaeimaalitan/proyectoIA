@@ -14,10 +14,11 @@ def a_estrella(origen : Estacion, destino : Estacion, red : Red, h : Heuristica)
     contador= count()
     inicio=(origen,None)
     g[inicio]=0
+    h_inicio= h.funcionH(origen,destino)
 
-    heapq.heappush(abiertos, (h.funcionH(origen, destino), next (contador),0,inicio))
+    heapq.heappush(abiertos, (h_inicio, h_inicio, next (contador),0,inicio))
     while abiertos:
-        f_actual, _, coste_actual, actual = heapq.heappop(abiertos)
+        f_actual, h_actual, _, coste_actual, actual = heapq.heappop(abiertos)
         if coste_actual > g[actual]:
             continue
         if actual in cerrados:
@@ -49,8 +50,10 @@ def a_estrella(origen : Estacion, destino : Estacion, red : Red, h : Heuristica)
                 padres[vecino] = actual
                 # Se añade como hijo a vecino siempre y si no tenia hijos actual, se crea un set vacío antes
                 hijos.setdefault(actual, set()).add(vecino)
-                f = peso + h.funcionH(extremo, destino)
-                heapq.heappush(abiertos, (f,next(contador), peso, vecino))
+                valor_h = h.funcionH(extremo, destino)
+                f = peso + valor_h
+
+                heapq.heappush(abiertos, (f, valor_h, next(contador), peso, vecino))
                 cerrados.discard(vecino)
                 #Este es el 7.2 per se, que lo hago con dos funciones extra que sino es muy largo
                 if estaba_en_cerrados:
@@ -93,7 +96,9 @@ def _actualizar_descendientes(nodo_raiz, g, padres, hijos, red, abiertos, cerrad
         nuevo_g = g[padre] + _coste_directo(padre, desc, red) #actualiza g
         if nuevo_g < g.get(desc, float("inf")):
             g[desc] = nuevo_g
-            f_desc = nuevo_g + h.funcionH(desc[0], destino)
-            heapq.heappush(abiertos, (f_desc, next(contador), nuevo_g, desc))
+            h_desc = h.funcionH(desc[0], destino)
+            f_desc = nuevo_g + h_desc
+
+            heapq.heappush(abiertos, (f_desc, h_desc, next(contador), nuevo_g, desc))
             cerrados.discard(desc)
             pila.extend(hijos.get(desc, ())) #Seguimos explorando descendientes
